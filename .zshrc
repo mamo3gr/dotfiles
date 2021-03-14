@@ -70,16 +70,19 @@ alias em='open -a Emacs.app'
 alias dc='docker-compose'
 
 #### git
-RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
-autoload -Uz vcs_info
-setopt prompt_subst
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
-zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
-RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+# ref:
+#   【zsh】絶対やるべき！ターミナルでgitのブランチ名を表示&補完
+#   【git-prompt / git-completion#】 - Qiita
+#    https://qiita.com/mikan3rd/items/d41a8ca26523f950ea9d
+source ~/.zsh/git-prompt.sh
+fpath=(~/.zsh $fpath)
+zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.bash
+autoload -Uz compinit && compinit
+GIT_PS1_SHOWDIRTYSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUPSTREAM=auto
+setopt PROMPT_SUBST ; PS1='%F{cyan}%c%f %F{green}$(__git_ps1 "(%s) ")%f%% '
 
 #### pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
