@@ -24,7 +24,7 @@ bindkey "^[[3~" delete-char
 # correct miss spelling
 setopt correct
 # wildcard
-setopt extended_glob
+#setopt extended_glob
 # disable C-s to lock and C-q to unlock
 setopt no_flow_control
 # directory traversal
