@@ -67,6 +67,7 @@ PROMPT="%F{blue}%1~%f %% "
 alias ls='ls -FG'
 alias ll='ls -lAhtFG'
 alias em='open -a Emacs.app'
+alias dc='docker-compose'
 
 #### git
 RPROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
