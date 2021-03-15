@@ -1,0 +1,32 @@
+[include]
+	path = ~/.gitconfig.local
+[color]
+	status      = auto
+	diff        = auto
+	branch      = auto
+	interactive = auto
+	grep        = auto
+	ui          = auto
+[alias]
+	ap = add -p
+	b  = branch
+	d  = diff
+	dc = diff --cached
+	ch = checkout
+	co = commit
+	s  = status
+	sw = switch
+	re = restore
+	us = reset HEAD
+	pl = pull
+	pu = push
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[core]
+	excludesfile = ~/.gitignore
+[commit]
+	template = ~/.commit_template
+[merge]
+	ff = false
+[pull]
+	ff = only
