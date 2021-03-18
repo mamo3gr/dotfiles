@@ -64,9 +64,17 @@ zstyle ':completion:*:default' menu select=2
 PROMPT="%F{blue}%1~%f %% "
 
 #### aliases
-alias ls='ls -FG'
-alias ll='ls -lAhtFG'
-alias em='open -a Emacs.app'
+case `uname` in
+    Darwin)
+        alias ls='ls -FG'
+        alias ll='ls -lAhtFG'
+        alias em='open -a Emacs.app'
+        ;;
+    Linux)
+        alias ls='ls -FG --color'
+        alias ll='ls -lAhtFG --color'
+        alias em='emacsclient_or_emacs'
+esac
 alias dc='docker-compose'
 
 #### git
