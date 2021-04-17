@@ -85,9 +85,7 @@ alias dc='docker-compose'
 #   [Emacs] emacsclient を快適に使うための設定 - Qiita
 #   https://qiita.com/sijiaoh/items/6bd9de68d596f6469129
 function emacsclient_or_emacs() {
-    if emacsclient -e 0 > /dev/null 2>&1; then
-        emacsclient -n "$@"
-    else
+    if ! emacsclient -n "$@" 0 > /dev/null 2>&1; then
         emacs "$@" &
     fi
 }
