@@ -110,3 +110,10 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+#### PyCharm
+PYCHARM_VERSION=2021.1
+export PATH=~/bin/pycharm-${PYCHARM_VERSION}/bin:$PATH
+function charm () {
+    pycharm.sh "$@" &> /dev/null &
+}
