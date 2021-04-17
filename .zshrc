@@ -22,7 +22,7 @@ colors
 
 #### control
 # enable backspace and delete
-stty erase ^H
+stty erase '^?'
 bindkey "^[[3~" delete-char
 # correct miss spelling
 setopt correct
