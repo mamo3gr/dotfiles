@@ -1,3 +1,6 @@
+#### Language
+export LANG=en_US.UTF8
+
 #### Keybind
 # Emacs keybind
 bindkey -e
