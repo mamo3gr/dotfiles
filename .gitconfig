@@ -14,6 +14,7 @@
 	dc = diff --cached
 	ch = checkout
 	co = commit
+	coa = commit --amend --date=now  # https://amaya382.hatenablog.jp/entry/2017/03/27/220000
 	s  = status
 	sw = switch
 	re = restore
