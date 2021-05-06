@@ -123,3 +123,6 @@ export PATH=~/bin/pycharm-${PYCHARM_VERSION}/bin:$PATH
 function charm () {
     pycharm.sh "$@" &> /dev/null &
 }
+#### CUDA
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
