@@ -85,7 +85,12 @@ alias dc='docker-compose'
 #   [Emacs] emacsclient を快適に使うための設定 - Qiita
 #   https://qiita.com/sijiaoh/items/6bd9de68d596f6469129
 function emacsclient_or_emacs() {
-    if ! emacsclient -n "$@" 0 > /dev/null 2>&1; then
+    # try to focus existing frame (server)
+    if emacsclient -n -e "(select-frame-set-input-focus (selected-frame))" > /dev/null 2>&1; then
+        # if the server exists, open file
+        emacsclient -n "$@" > /dev/null &
+    else
+        # otherwise invoke new server
         emacs "$@" &
     fi
 }
