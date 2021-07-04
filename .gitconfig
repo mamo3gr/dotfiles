@@ -24,6 +24,8 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	rb = rebase
+	rbia = rebase --interactive --autosquash
+	rbc = rebase --committer-date-is-author-date
 	su = submodule
 	cp = cherry-pick
 [core]
