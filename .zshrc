@@ -113,3 +113,6 @@ setopt PROMPT_SUBST ; PS1='%F{cyan}%c%f %F{green}$(__git_ps1 "(%s) ")%f%% '
 #### CUDA
 export PATH="/usr/local/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
+
+#### pyenv
+eval "$(pyenv init -)"
