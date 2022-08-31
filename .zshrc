@@ -171,4 +171,7 @@ export PATH="/usr/local/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 #### pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
