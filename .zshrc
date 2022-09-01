@@ -55,7 +55,7 @@ bindkey "^n" history-beginning-search-forward-end
 #   bash/zsh のヒストリを peco で便利にする - Qiita
 #   https://qiita.com/comuttun/items/f54e755f22508a6c7d78
 peco-select-history() {
-    BUFFER=$(history 1 | sort -k1,1nr | perl -ne 'BEGIN { my @lines = (); } s/^\s*\d+\*?\s*//; $in=$_; if (!(grep {$in eq $_} @lines)) { push(@lines, $in); print $in; }' | peco --query "$LBUFFER")
+    BUFFER=$(history 1 | sort -k1,1nr | sed -E 's/^[ |0-9]+  //' | peco --query "$LBUFFER")
     CURSOR=${#BUFFER}
     zle reset-prompt
 }
@@ -76,7 +76,7 @@ if [[ -n $(echo ${^fpath}/chpwd_recent_dirs(N)) && -n $(echo ${^fpath}/cdr(N)) ]
 fi
 
 peco-cdr () {
-    local selected_dir="$(cdr -l | sed 's/^[0-9]\+ \+//' | peco --prompt="cdr >" --query "$LBUFFER")"
+    local selected_dir="$(cdr -l | sed -E 's/^[0-9]+ +//' | peco --prompt="cdr >" --query "$LBUFFER")"
     if [ -n "$selected_dir" ]; then
         BUFFER="cd ${selected_dir}"
         zle accept-line
@@ -90,14 +90,9 @@ bindkey '^s' peco-cdr
 #   pecoを使って端末操作を爆速にする - Qiita
 #   https://qiita.com/reireias/items/fd96d67ccf1fdffb24ed
 function peco-ghq-look () {
-    local ghq_roots="$(git config --path --get-all ghq.root)"
-    local selected_dir=$(ghq list --full-path | \
-        xargs -I{} ls -dl --time-style=+%s {}/.git | sed 's/.*\([0-9]\{10\}\)/\1/' | sort -nr | \
-        sed "s,.*\(${ghq_roots/$'\n'/\|}\)/,," | \
-        sed 's/\/.git//' | \
-        peco --prompt="cd-ghq >" --query "$LBUFFER")
+    local selected_dir="$(ghq list --full-path | peco --prompt="cd-ghq >" --query "$LBUFFER")"
     if [ -n "$selected_dir" ]; then
-        BUFFER="cd $(ghq list --full-path | grep --color=never -E "/$selected_dir$")"
+        BUFFER="cd ${selected_dir}"
         zle accept-line
     fi
 }
