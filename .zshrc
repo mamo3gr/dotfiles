@@ -175,3 +175,9 @@ alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 #### poetry
 export PATH="$HOME/.local/bin:$PATH"
+
+#### trash-cli
+if type trash-put &> /dev/null
+then
+    alias rm=trash-put
+fi
