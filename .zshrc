@@ -102,6 +102,7 @@ zle -N peco-ghq-look
 bindkey '^g' peco-ghq-look
 
 #### completion
+fpath+=~/.zfunc
 if type brew &>/dev/null; then
     FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
 
