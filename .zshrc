@@ -132,6 +132,8 @@ case `uname` in
         alias em='emacsclient_or_emacs'
 esac
 alias dc='docker-compose'
+alias po='poetry'
+alias ch='charm'
 
 #### Emacs
 # ref:
