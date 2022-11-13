@@ -57,7 +57,7 @@ bindkey "^n" history-beginning-search-forward-end
 #   bash/zsh のヒストリを peco で便利にする - Qiita
 #   https://qiita.com/comuttun/items/f54e755f22508a6c7d78
 peco-select-history() {
-    BUFFER=$(history 1 | sort -k1,1nr | sed -E 's/^[ |0-9]+  //' | peco --query "$LBUFFER")
+    BUFFER=$(history 1 | sort -k1,1nr | sed -E 's/^[ |0-9|\*]+//' | peco --query "$LBUFFER")
     CURSOR=${#BUFFER}
     zle reset-prompt
 }
