@@ -124,13 +124,11 @@ PROMPT="%F{blue}%1~%f %% "
 case `uname` in
     Darwin)
         alias ls='ls -FG'
-        alias ll='ls -lAhtFG'
-        alias em='open -a Emacs.app'
+        alias ll='ls -lAhFG'
         ;;
     Linux)
         alias ls='ls -FG --color'
-        alias ll='ls -lAhtFG --color'
-        alias em='emacsclient_or_emacs'
+        alias ll='ls -lAhFG --color'
 esac
 alias dc='docker-compose'
 alias po='poetry'
