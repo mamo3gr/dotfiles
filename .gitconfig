@@ -28,6 +28,8 @@
 	rbc = rebase --committer-date-is-author-date
 	su = submodule
 	cp = cherry-pick
+	# https://stackoverflow.com/questions/6127328/how-do-i-delete-all-git-branches-which-have-been-merged
+	cleanup = "!git branch --merged | grep -v -P '^\\*|master|main' | xargs -n 1 -r git branch -d"
 [core]
 	excludesfile = ~/.gitignore
 	pager = git-split-diffs --color | less -RFX
