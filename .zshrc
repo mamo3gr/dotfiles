@@ -142,6 +142,14 @@ esac
 alias dc='docker-compose'
 alias po='poetry'
 alias ch='charm'
+alias cdiff='colordiff'
+alias kc='kubectl'
+alias kx='kubectx'
+alias tf='terraform'
+alias gi='git'
+alias le='less'
+alias op='open'
+alias gs='gcloud storage'
 
 #### Emacs
 # ref:
