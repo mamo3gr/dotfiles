@@ -33,6 +33,7 @@
 	cleanup = "!git branch --merged | egrep -v '^\\*|master|main' | xargs -n 1 -r git branch -d"
   # https://stackoverflow.com/a/18143078
 	cleanup-remote = "!git branch -r --merged | egrep -v '^\\*|master|main' | sed 's/origin\\///' | xargs -n 1 git push --delete origin"
+	merge-dryrun = merge --no-commit --no-ff
 [core]
 	excludesfile = ~/.gitignore
 	pager = git-split-diffs --color | less -RFX
