@@ -20,6 +20,13 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
+# 成功したコマンドだけ履歴に残す
+# ref. https://smashawk.com/post-16
+zshaddhistory() {
+    # 以下の条件をすべて満たすものだけをヒストリに追加する
+    [[ "$?" == 0 ]]
+}
+
 #### display
 # color
 autoload -Uz colors
