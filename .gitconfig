@@ -40,14 +40,16 @@
 	excludesfile = ~/.gitignore
 	pager = git-split-diffs --color | less -RFX
 	quotepath = false
+	ignorecase = false
+	autocrlf = input
 [commit]
 	template = ~/.commit_template
 [merge]
 	ff = false
+	conflictStyle = zdiff3
 [pull]
 	ff = only
 [init]
 	defaultBranch = main
 [push]
-	default = current
 	autoSetupRemote = true
