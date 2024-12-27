@@ -34,6 +34,8 @@
   # https://stackoverflow.com/a/18143078
 	cleanup-remote = "!git branch -r --merged | egrep -v '^\\*|master|main' | sed 's/origin\\///' | xargs -n 1 git push --delete origin"
 	merge-dryrun = merge --no-commit --no-ff
+	# https://qiita.com/Yinaura/items/30992f25b87f76af3ba2
+	force-pull = !git fetch && git reset --hard origin/$(git current-branch)
 [core]
 	excludesfile = ~/.gitignore
 	pager = git-split-diffs --color | less -RFX
