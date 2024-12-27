@@ -20,6 +20,13 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
+# 成功したコマンドだけ履歴に残す
+# ref. https://smashawk.com/post-16
+zshaddhistory() {
+    # 以下の条件をすべて満たすものだけをヒストリに追加する
+    [[ "$?" == 0 ]]
+}
+
 #### display
 # color
 autoload -Uz colors
@@ -135,6 +142,14 @@ esac
 alias dc='docker-compose'
 alias po='poetry'
 alias ch='charm'
+alias cdiff='colordiff'
+alias kc='kubectl'
+alias kx='kubectx'
+alias tf='terraform'
+alias gi='git'
+alias le='less'
+alias op='open'
+alias gs='gcloud storage'
 
 #### Emacs
 # ref:
