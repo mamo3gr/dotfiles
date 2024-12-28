@@ -38,7 +38,7 @@
 	force-pull = !git fetch && git reset --hard origin/$(git current-branch)
 [core]
 	excludesfile = ~/.gitignore
-	pager = git-split-diffs --color | less -RFX
+	#pager = git-split-diffs --color | less -RFX
 	quotepath = false
 	ignorecase = false
 	autocrlf = input
