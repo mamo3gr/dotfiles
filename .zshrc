@@ -126,6 +126,11 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # enable to select completion
 zstyle ':completion:*:default' menu select=2
 
+#### autosuggestion
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#80715e,underline"
+bindkey '^ ' autosuggest-execute
+
 #### prompt
 PROMPT="%F{blue}%1~%f %% "
 
