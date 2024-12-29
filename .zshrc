@@ -199,6 +199,11 @@ export PATH="$HOME/.local/bin:$PATH"
 
 #### PyCharm
 export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
+
+#### Go
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
+
 #### trash-cli
 if type trash-put &> /dev/null
 then
