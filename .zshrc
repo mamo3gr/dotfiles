@@ -154,6 +154,7 @@ alias gi='git'
 alias le='less'
 alias op='open'
 alias gs='gcloud storage'
+alias ba='bat'
 
 #### Emacs
 # ref:
