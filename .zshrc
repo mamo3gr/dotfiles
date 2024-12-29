@@ -208,6 +208,9 @@ export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 export GOPATH=$HOME/go
 export PATH="$GOPATH/bin:$PATH"
 
+#### Visual Studio Code
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
 #### trash-cli
 if type trash-put &> /dev/null
 then
