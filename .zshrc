@@ -113,7 +113,7 @@ bindkey '^g' peco-ghq-look
 #### completion
 fpath+=~/.zfunc
 if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
 
     autoload -Uz compinit
     compinit -U
@@ -126,6 +126,11 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 # enable to select completion
 zstyle ':completion:*:default' menu select=2
 
+#### autosuggestion
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#80715e,underline"
+bindkey '^ ' autosuggest-execute
+
 #### prompt
 PROMPT="%F{blue}%1~%f %% "
 
@@ -134,14 +139,16 @@ case `uname` in
     Darwin)
         alias ls='ls -FG'
         alias ll='ls -lAhFG'
+        export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$PATH"
+        alias em='emacsclient_or_emacs'
         ;;
     Linux)
         alias ls='ls -FG --color'
         alias ll='ls -lAhFG --color'
+        alias em='emacsclient_or_emacs'
 esac
 alias dc='docker-compose'
 alias po='poetry'
-alias ch='charm'
 alias cdiff='colordiff'
 alias kc='kubectl'
 alias kx='kubectx'
@@ -150,6 +157,7 @@ alias gi='git'
 alias le='less'
 alias op='open'
 alias gs='gcloud storage'
+alias ba='bat'
 
 #### Emacs
 # ref:
@@ -186,12 +194,22 @@ export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
 #### pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 #### poetry
 export PATH="$HOME/.local/bin:$PATH"
+
+#### PyCharm
+export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
+
+#### Go
+export GOPATH=$HOME/go
+export PATH="$GOPATH/bin:$PATH"
+
+#### Visual Studio Code
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
 #### trash-cli
 if type trash-put &> /dev/null
