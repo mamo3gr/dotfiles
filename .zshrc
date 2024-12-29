@@ -146,7 +146,6 @@ case `uname` in
 esac
 alias dc='docker-compose'
 alias po='poetry'
-alias ch='charm'
 alias cdiff='colordiff'
 alias kc='kubectl'
 alias kx='kubectx'
@@ -198,6 +197,8 @@ alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 #### poetry
 export PATH="$HOME/.local/bin:$PATH"
 
+#### PyCharm
+export PATH="$HOME/Library/Application Support/JetBrains/Toolbox/scripts:$PATH"
 #### trash-cli
 if type trash-put &> /dev/null
 then
