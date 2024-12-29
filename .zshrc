@@ -139,10 +139,13 @@ case `uname` in
     Darwin)
         alias ls='ls -FG'
         alias ll='ls -lAhFG'
+        export PATH="/Applications/Emacs.app/Contents/MacOS/bin:$PATH"
+        alias em='emacsclient_or_emacs'
         ;;
     Linux)
         alias ls='ls -FG --color'
         alias ll='ls -lAhFG --color'
+        alias em='emacsclient_or_emacs'
 esac
 alias dc='docker-compose'
 alias po='poetry'
