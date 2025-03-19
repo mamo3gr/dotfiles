@@ -137,6 +137,8 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 zstyle ':completion:*:default' menu select=2
 
 #### autosuggestion
+# you need to install by brew install zsh-autosuggestions
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#80715e,underline"
 bindkey '^ ' autosuggest-execute
 
