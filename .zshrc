@@ -195,7 +195,7 @@ GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWUNTRACKEDFILES=true
 GIT_PS1_SHOWSTASHSTATE=true
 GIT_PS1_SHOWUPSTREAM=auto
-setopt PROMPT_SUBST ; PS1='%F{cyan}%c%f %F{green}$(__git_ps1 "(%s) ")%f%% '
+setopt PROMPT_SUBST ; PS1='%F{cyan}%2d%f %F{green}$(__git_ps1 "(%s) ")%f%% '
 
 #### CUDA
 export PATH="/usr/local/cuda/bin:$PATH"
