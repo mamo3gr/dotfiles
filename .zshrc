@@ -60,6 +60,23 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
+#### homebrew
+arch=$(arch)
+
+if [ $arch = "arm64" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  eval "$($HOME/intel/homebrew/bin/brew shellenv)"
+fi
+
+# HOMEBREW_PREFIXは`brew shellenv`でexportされている
+export HOMEBREW_CACHE=$HOMEBREW_PREFIX/cache
+
+#### sheldon
+# installation:
+#   brew install sheldon
+eval "$(sheldon source)"
+
 #### peco
 # history search
 # ref:
@@ -111,13 +128,6 @@ zle -N peco-ghq-look
 bindkey '^g' peco-ghq-look
 
 #### completion
-fpath+=~/.zfunc
-if type brew &>/dev/null; then
-    FPATH=$HOMEBREW_PREFIX/share/zsh-completions:$FPATH
-
-    autoload -Uz compinit
-    compinit -U
-fi
 # case-insensitive completion
 # ref:
 #   zshで適度なcase-insensitive補完 - Qiita
@@ -127,7 +137,6 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 zstyle ':completion:*:default' menu select=2
 
 #### autosuggestion
-source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#80715e,underline"
 bindkey '^ ' autosuggest-execute
 
