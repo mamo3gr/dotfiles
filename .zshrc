@@ -222,8 +222,26 @@ export PATH="$GOPATH/bin:$PATH"
 #### Visual Studio Code
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
-#### trash-cli
-if type trash-put &> /dev/null
-then
-    alias rm=trash-put
+#### delete file safely
+# ref. https://zenn.dev/niikei/articles/52c1a07b2f742e
+export PATH="$HOMEBREW_PREFIX/opt/trash/bin:$PATH"
+if type trash > /dev/null 2>&1; then
+    alias rm='trash -F'
+else
+    echo "Warning: 'trash' command is not available. File deletion will be permanent."
+    alias rm='function() {
+        echo -n "Are you sure you want to permanently delete files? [Y/n] "
+        read -r response
+        case "$response" in
+            [Yy]|[Yy][Ee][Ss]|"")
+                command rm "$@"
+                ;;
+            [Nn]|[Nn][Oo])
+                echo "Deletion cancelled."
+                ;;
+            *)
+                echo "Invalid input. Deletion cancelled."
+                ;;
+        esac
+    }'
 fi
