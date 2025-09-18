@@ -44,6 +44,7 @@
 	autocrlf = input
 [commit]
 	template = ~/.commit_template
+	verbose = true
 [merge]
 	ff = false
 	conflictStyle = zdiff3
