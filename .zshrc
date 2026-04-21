@@ -222,9 +222,9 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 
 #### delete file safely
 # ref. https://zenn.dev/niikei/articles/52c1a07b2f742e
-export PATH="$HOMEBREW_PREFIX/opt/trash/bin:$PATH"
+# for MacOS 14 (sonoma) or later, you can use /usr/bin/trash
 if type trash > /dev/null 2>&1; then
-    alias rm='trash -F'
+    alias rm='trash'
 else
     echo "Warning: 'trash' command is not available. File deletion will be permanent."
     alias rm='function() {
