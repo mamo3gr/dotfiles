@@ -203,12 +203,6 @@ setopt PROMPT_SUBST ; PS1='%F{cyan}%2d%f %F{green}$(__git_ps1 "(%s) ")%f%% '
 export PATH="/usr/local/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
-#### pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-
 #### poetry
 export PATH="$HOME/.local/bin:$PATH"
 
