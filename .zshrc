@@ -170,6 +170,9 @@ alias le='less'
 alias op='open'
 alias gs='gcloud storage'
 alias ba='bat'
+alias cl='claude'
+alias ch='pycharm'
+alias gl='goland'
 
 #### Emacs
 # ref:
