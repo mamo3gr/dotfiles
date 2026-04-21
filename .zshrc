@@ -132,6 +132,7 @@ bindkey '^g' peco-ghq-look
 # ref:
 #   zshで適度なcase-insensitive補完 - Qiita
 #   https://qiita.com/watertight/items/2454f3e9e43ef647eb6b
+autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 # enable to select completion
 zstyle ':completion:*:default' menu select=2
