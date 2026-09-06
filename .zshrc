@@ -243,3 +243,20 @@ else
         esac
     }'
 fi
+
+# .env ファイルを読み込んで export する関数
+loadenv() {
+  # 引数があればそのファイルを、なければデフォルトで .env.local を対象にする
+  local env_file="${1:-.env.local}"
+
+  if [ -f "$env_file" ]; then
+    set -a
+    source "$env_file"
+    set +a
+    echo "✅ Loaded environment variables from $env_file"
+  else
+    echo "❌ Error: $env_file not found."
+    return 1
+  fi
+}
+
