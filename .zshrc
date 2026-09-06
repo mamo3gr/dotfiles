@@ -132,6 +132,7 @@ bindkey '^g' peco-ghq-look
 # ref:
 #   zshで適度なcase-insensitive補完 - Qiita
 #   https://qiita.com/watertight/items/2454f3e9e43ef647eb6b
+autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 # enable to select completion
 zstyle ':completion:*:default' menu select=2
@@ -169,6 +170,9 @@ alias le='less'
 alias op='open'
 alias gs='gcloud storage'
 alias ba='bat'
+alias cl='claude'
+alias ch='pycharm'
+alias gl='goland'
 
 #### Emacs
 # ref:
@@ -203,12 +207,6 @@ setopt PROMPT_SUBST ; PS1='%F{cyan}%2d%f %F{green}$(__git_ps1 "(%s) ")%f%% '
 export PATH="/usr/local/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
-#### pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-
 #### poetry
 export PATH="$HOME/.local/bin:$PATH"
 
@@ -224,9 +222,9 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PA
 
 #### delete file safely
 # ref. https://zenn.dev/niikei/articles/52c1a07b2f742e
-export PATH="$HOMEBREW_PREFIX/opt/trash/bin:$PATH"
+# for MacOS 14 (sonoma) or later, you can use /usr/bin/trash
 if type trash > /dev/null 2>&1; then
-    alias rm='trash -F'
+    alias rm='trash'
 else
     echo "Warning: 'trash' command is not available. File deletion will be permanent."
     alias rm='function() {
@@ -245,3 +243,20 @@ else
         esac
     }'
 fi
+
+# .env ファイルを読み込んで export する関数
+loadenv() {
+  # 引数があればそのファイルを、なければデフォルトで .env.local を対象にする
+  local env_file="${1:-.env.local}"
+
+  if [ -f "$env_file" ]; then
+    set -a
+    source "$env_file"
+    set +a
+    echo "✅ Loaded environment variables from $env_file"
+  else
+    echo "❌ Error: $env_file not found."
+    return 1
+  fi
+}
+
